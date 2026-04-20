@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr-CA" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Ranch Elk Outfitters | Chasse au Wapiti Haut de Gamme</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0a0a0a',
+                        'brand-gray': '#1a1a1a',
+                        'brand-accent': '#c2a373', /* Premium muted gold/bronze */
+                        'brand-accent-hover': '#d1b58a',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for things Tailwind CDN doesn't cover perfectly out of the box */
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Subtle cinematic vignette effect over the video */
+        .vignette-overlay {
+            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(10,10,10,0.85) 100%);
+        }
+
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-8 md:px-16 flex justify-between items-center border-b border-transparent">
+        <div class="text-2xl font-serif tracking-widest uppercase font-semibold text-white">
+            Jackson <span class="text-brand-accent">Ranch</span>
+        </div>
+        
+        <div class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase text-gray-300">
+            <a href="#experience" class="hover:text-brand-accent transition-colors duration-300">L'Expérience</a>
+            <a href="#lodge" class="hover:text-brand-accent transition-colors duration-300">Hébergement</a>
+            <a href="#gallery" class="hover:text-brand-accent transition-colors duration-300">Galerie</a>
+            <a href="#contact" class="border border-brand-accent text-brand-accent px-6 py-2 hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
+                Réservez Votre Chasse
+            </a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="./videotempo.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 vignette-overlay"></div>
+        </div>
+
+        <div class="relative z-10 px-4 max-w-5xl mx-auto mt-20 reveal active">
+            <p class="text-brand-accent uppercase tracking-[0.3em] text-sm md:text-base mb-6 font-medium">La Quête Ultime</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-8 drop-shadow-lg">
+                Chasse au Wapiti  <br> <span class="italic text-gray-200 font-light">en Pleine Nature.</span>
+            </h1>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
+                <a href="#explore" class="bg-brand-accent text-brand-dark uppercase tracking-widest text-sm px-10 py-4 hover:bg-brand-accent-hover transition-colors duration-300">
+                    Explorez la Chasse
+                </a>
+                <a href="#contact" class="flex items-center gap-3 uppercase tracking-widest text-sm text-white hover:text-brand-accent transition-colors duration-300">
+                    <span>Informez-vous</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-70">
+            <span class="text-xs uppercase tracking-widest mb-2 text-gray-400">Défiler</span>
+            <div class="w-[1px] h-12 bg-brand-accent"></div>
+        </div>
+    </header>
+
+    <section id="explore" class="py-32 px-6 md:px-16 bg-brand-dark relative z-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Un Héritage d'Excellence</p>
+                <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight">Où la Nature Sauvage Rencontre un calme Inégalé.</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-8">
+                    Au Jackson Ranch, nous n'offrons pas seulement une chasse ; nous organisons une expédition de classe mondiale. S'étendant sur des milliers d'acres de terres privées immaculées, notre domaine abrite certains des plus majestueux wapitis trophées au pays. C'est une invitation exclusive à vous mesurer à la nature, appuyé par des guides experts et une hospitalité cinq étoiles.
+                </p>
+                <img src="./wapiti.png" alt="Wapiti dans la nature" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="reveal md:mt-32">
+                <img src="./lodge.jpg" alt="Paysage de chasse" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 bg-brand-gray border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Le Standard Jackson Ranch</h2>
+                <div class="w-24 h-[1px] bg-brand-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden mb-6 h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1600078685168-3bf4672611e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wapitis Trophées" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
+                    </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Wapitis Trophées</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">L'accès à des terres privées rigoureusement gérées vous assure des occasions sans précédent de croiser des wapitis matures de calibre mondial.</p>
+                </div>
+                
+                <div class="group cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <div class="overflow-hidden mb-6 h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guides Maîtres" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
+                    </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Guides Maîtres</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Nos guides chevronnés possèdent une connaissance générationnelle du terrain et du comportement des hardes, garantissant une chasse stratégique et éthique.</p>
+                </div>
+
+                <div class="group cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <div class="overflow-hidden mb-6 h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Le Lodge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
+                    </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Le Lodge</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Retirez-vous des montagnes pour profiter de suites privées, de feux de foyer crépitants et de repas gastronomiques concoctés par notre chef exécutif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-brand-dark pt-32 pb-12 border-t border-white/10 text-center">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            <h2 class="font-serif text-4xl md:text-6xl mb-8">Sécurisez Votre Expédition</h2>
+            <p class="text-gray-400 mb-12 font-light">Les places sont strictement limitées afin d'assurer la qualité de nos hardes et l'exclusivité de votre expérience. Les réservations pour la prochaine saison sont maintenant ouvertes.</p>
+            <a href="mailto:info@jacksonranchelkoutfitters.com" class="inline-block bg-transparent border border-brand-accent text-brand-accent uppercase tracking-widest text-sm px-12 py-5 hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
+                Consultez nos forfaits
+            </a>
+        </div>
+        
+        <div class="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-gray-600 text-xs uppercase tracking-widest">
+            <p>&copy; 2026 Jackson Ranch Elk Outfitters.</p>
+            <span class="hidden md:inline">•</span>
+            <a href="#" class="hover:text-white transition-colors">Politique de Confidentialité</a>
+            <span class="hidden md:inline">•</span>
+            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/10', 'py-4');
+                navbar.classList.remove('py-6', 'border-transparent');
+            } else {
+                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/10', 'py-4');
+                navbar.classList.add('py-6', 'border-transparent');
+            }
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
