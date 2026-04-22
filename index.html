@@ -34,7 +34,6 @@
     </script>
 
     <style>
-        /* Custom styles for things Tailwind CDN doesn't cover perfectly out of the box */
         body {
             background-color: #0a0a0a;
             color: #ffffff;
@@ -60,12 +59,10 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Subtle cinematic vignette effect over the video */
         .vignette-overlay {
             background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(10,10,10,0.85) 100%);
         }
 
-        /* Smooth reveal animation classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -87,7 +84,7 @@
         <div class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase text-gray-300">
             <a href="#experience" class="hover:text-brand-accent transition-colors duration-300">L'Expérience</a>
             <a href="#lodge" class="hover:text-brand-accent transition-colors duration-300">Hébergement</a>
-            <a href="#gallery" class="hover:text-brand-accent transition-colors duration-300">Galerie</a>
+            <a href="#activities" class="hover:text-brand-accent transition-colors duration-300">Activités</a>
             <a href="#contact" class="border border-brand-accent text-brand-accent px-6 py-2 hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
                 Réservez Votre Chasse
             </a>
@@ -141,7 +138,120 @@
         </div>
     </section>
 
-    <section id="experience" class="py-32 bg-brand-gray border-y border-white/5">
+    <section id="lodge" class="py-32 bg-brand-gray border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center mb-24 reveal">
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Confort et Authenticité</p>
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Le Jackson Lodge</h2>
+                <div class="w-24 h-[1px] bg-brand-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 text-center">
+                <div class="reveal">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Jusqu'à 6 Chasseurs</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Vous avez la possibilité de former un groupe de 4 à 6 chasseurs pour un trophée ou de combiner un 2e trophée pour un même groupe. Nous sommes entièrement équipés pour recevoir jusqu'à 6 chasseurs par forfait.</p>
+                </div>
+
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 11h18M3 15h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Chambres</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le Jackson Lodge vous offre trois magnifiques chambres entièrement équipées. Literie complète incluse.<br><br>Chambre 1 : 1 lit queen<br>Chambre 2 : 1 lit queen<br>Chambre 3 : 2 lits simples</p>
+                </div>
+
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12V7a2 2 0 00-2-2H5a2 2 0 00-2 2v5m18 0v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9m18 0h-4m-10 0H3m8-8v12m0-12a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Salle de Bain</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Chaque lodge comprend une magnifique salle de bain rustique avec une grande douche en céramique. Inclus : serviettes, papier hygiénique, savon et shampoing.</p>
+                </div>
+
+                <div class="reveal">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Espace Feu Extérieur</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Quoi de mieux que de se retrouver entre amis autour du feu en se racontant des histoires de chasse mémorables ? Venez prendre un bon verre de vin et vous réchauffer autour d'un feu après une grosse journée de chasse. Nous avons aménagé un bel espace extérieur parfait pour les feux de camp... Bois inclus.</p>
+                </div>
+
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Salon Vue Panoramique</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le salon des chasseurs par excellence ! Grâce à sa grande fenestration et à son plafond cathédral, vous y trouverez assurément le confort. Vous pourrez admirer la vue panoramique bien au chaud, car un chaleureux poêle à bois est à votre disposition dans le salon.</p>
+                </div>
+
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Cuisine Complète</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le lodge comprend une luxueuse cuisine à aire ouverte extrêmement lumineuse. Entièrement équipée, elle comprend des électroménagers au gaz de style rétro, une grande table rustique pour recevoir jusqu'à six personnes, ainsi qu'un petit comptoir-bar avec des bancs d'îlot pour vos apéros d'après-chasse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="py-32 bg-brand-dark border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="reveal relative z-10">
+                <h2 class="font-sans font-bold text-6xl md:text-8xl mb-6 text-white uppercase tracking-tighter opacity-[0.03] absolute -top-12 -left-4 pointer-events-none select-none">Activités</h2>
+                <h3 class="font-serif text-3xl md:text-4xl mb-6 leading-snug">Il n'y a pas que la chasse pour occuper vos journées au <span class="text-brand-accent italic font-light">Jackson Ranch.</span></h3>
+                <div class="w-16 h-[1px] bg-brand-accent mb-12"></div>
+                
+                <div class="space-y-12">
+                    <div class="flex gap-6 items-start group">
+                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                         </div>
+                         <div>
+                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Chasse au Petit Gibier</h4>
+                             <p class="text-gray-400 text-sm font-light leading-relaxed">Le Jackson Ranch, c'est l'endroit idéal pour la chasse à la perdrix. À bord d'un Argo, nous vous conduirons à un endroit de choix pour la chasse au petit gibier. Nous vous ferons ensuite découvrir les meilleures recettes pour apprêter la perdrix.</p>
+                         </div>
+                    </div>
+
+                    <div class="flex gap-6 items-start group">
+                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                         </div>
+                         <div>
+                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Randonnée en VTT</h4>
+                             <p class="text-gray-400 text-sm font-light leading-relaxed">Des moteurs, ce n'est pas ce qui manque au Jackson Ranch ! Trois VTT, trois côte à côte et un Argo sont à votre disposition. Pour les chasseurs qui veulent découvrir les magnifiques paysages de la région, nous organiserons une randonnée jusqu'au sommet du Mont Hereford où vous profiterez de points de vue à couper le souffle. Essence incluse.</p>
+                         </div>
+                    </div>
+
+                    <div class="flex gap-6 items-start group">
+                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                         </div>
+                         <div>
+                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Pêche</h4>
+                             <p class="text-gray-400 text-sm font-light leading-relaxed">Au Jackson Ranch, trois majestueux lacs ensemencés sont à votre portée pour taquiner la truite. Vous avez aussi la possibilité de combiner un forfait de pêche à votre séjour sur nos magnifiques lacs du Québec. L'embarcation motorisée est disponible sur demande.</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal lg:pl-12">
+                <div class="relative p-2 border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Carte du territoire Jackson Ranch" class="w-full h-[650px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute bottom-6 right-6 bg-brand-dark/90 backdrop-blur-md px-6 py-4 border border-white/10">
+                        <span class="block text-xs text-brand-accent tracking-widest uppercase mb-1">Domaine Privé</span>
+                        <span class="block font-serif text-white text-xl">Carte du Territoire</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 bg-brand-gray border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="text-center mb-24 reveal">
                 <h2 class="font-serif text-4xl md:text-5xl mb-4">Le Standard Jackson Ranch</h2>
@@ -169,8 +279,8 @@
                     <div class="overflow-hidden mb-6 h-64 relative">
                         <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Le Lodge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
                     </div>
-                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Le Lodge</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Retirez-vous des montagnes pour profiter de suites privées, de feux de foyer crépitants et de repas gastronomiques concoctés par notre chef exécutif.</p>
+                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Service Haut de Gamme</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Retirez-vous des montagnes pour profiter d'une attention sur mesure et d'une logistique sans faille tout au long de votre séjour.</p>
                 </div>
             </div>
         </div>
@@ -195,7 +305,6 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -207,7 +316,6 @@
             }
         });
 
-        // Scroll reveal animation
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealOptions = {
