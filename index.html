@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson Ranch Elk Outfitters | Chasse au Wapiti Haut de Gamme</title>
+    <title>Jackson Ranch Elk Outfitters | Chasse au Wapiti & Cerf Rouge Haut de Gamme</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-dark': '#0a0a0a',
-                        'brand-gray': '#1a1a1a',
-                        'brand-accent': '#c2a373', /* Premium muted gold/bronze */
-                        'brand-accent-hover': '#d1b58a',
+                        'brand-dark': '#1E1E1E', /* Charcoal/Black background */
+                        'brand-brown': '#633B1C', /* Dark Brown secondary background */
+                        'brand-accent': '#E59005', /* Orange/Gold primary accent */
+                        'brand-accent-hover': '#D5B16F', /* Tan/Light Brown hover */
+                        'brand-muted': '#939598', /* Medium Gray for text */
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
@@ -35,7 +36,7 @@
 
     <style>
         body {
-            background-color: #0a0a0a;
+            background-color: #1E1E1E;
             color: #ffffff;
         }
         
@@ -60,7 +61,7 @@
         }
 
         .vignette-overlay {
-            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(10,10,10,0.85) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(30,30,30,0.85) 100%);
         }
 
         .reveal {
@@ -81,12 +82,13 @@
             Jackson <span class="text-brand-accent">Ranch</span>
         </div>
         
-        <div class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase text-gray-300">
-            <a href="#experience" class="hover:text-brand-accent transition-colors duration-300">L'Expérience</a>
-            <a href="#lodge" class="hover:text-brand-accent transition-colors duration-300">Hébergement</a>
-            <a href="#activities" class="hover:text-brand-accent transition-colors duration-300">Activités</a>
+        <div class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase text-brand-muted">
+            <a href="#explore" class="hover:text-brand-accent transition-colors duration-300">Notre Domaine</a>
+            <a href="#experience" class="hover:text-brand-accent transition-colors duration-300">Chasse & Tarifs</a>
+            <a href="#lodge" class="hover:text-brand-accent transition-colors duration-300">Forfaits & Hébergement</a>
+            <a href="#activities" class="hover:text-brand-accent transition-colors duration-300">Activités & Services</a>
             <a href="#contact" class="border border-brand-accent text-brand-accent px-6 py-2 hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
-                Réservez Votre Chasse
+                Obtenir un Devis
             </a>
         </div>
     </nav>
@@ -101,23 +103,27 @@
         </div>
 
         <div class="relative z-10 px-4 max-w-5xl mx-auto mt-20 reveal active">
-            <p class="text-brand-accent uppercase tracking-[0.3em] text-sm md:text-base mb-6 font-medium">La Quête Ultime</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-8 drop-shadow-lg">
-                Chasse au Wapiti  <br> <span class="italic text-gray-200 font-light">en Pleine Nature.</span>
+            <p class="text-brand-accent uppercase tracking-[0.3em] text-sm md:text-base mb-6 font-medium">Saisons 2026 & 2027 Disponibles</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-4 drop-shadow-lg text-white">
+                Wapiti & Cerf Rouge 
             </h1>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
-                <a href="#explore" class="bg-brand-accent text-brand-dark uppercase tracking-widest text-sm px-10 py-4 hover:bg-brand-accent-hover transition-colors duration-300">
-                    Explorez la Chasse
+            <h2 class="font-serif text-3xl md:text-5xl italic text-brand-accent-hover font-light mb-8 drop-shadow-lg">
+                Haut de Gamme.
+            </h2>
+            <p class="text-brand-muted uppercase tracking-widest text-sm mb-10">Saison annuelle : du 15 août au 30 novembre</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-6">
+                <a href="#experience" class="bg-brand-accent text-brand-dark uppercase tracking-widest text-sm px-10 py-4 hover:bg-brand-accent-hover transition-colors duration-300">
+                    Découvrir l'Expérience
                 </a>
                 <a href="#contact" class="flex items-center gap-3 uppercase tracking-widest text-sm text-white hover:text-brand-accent transition-colors duration-300">
-                    <span>Informez-vous</span>
+                    <span>Devis personnalisé</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </a>
             </div>
         </div>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-70">
-            <span class="text-xs uppercase tracking-widest mb-2 text-gray-400">Défiler</span>
+            <span class="text-xs uppercase tracking-widest mb-2 text-brand-muted">Défiler</span>
             <div class="w-[1px] h-12 bg-brand-accent"></div>
         </div>
     </header>
@@ -125,182 +131,172 @@
     <section id="explore" class="py-32 px-6 md:px-16 bg-brand-dark relative z-20">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="reveal">
-                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Un Héritage d'Excellence</p>
-                <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight">Où la Nature Sauvage Rencontre un calme Inégalé.</h2>
-                <p class="text-gray-400 font-light leading-relaxed mb-8">
-                    Au Jackson Ranch, nous n'offrons pas seulement une chasse ; nous organisons une expédition de classe mondiale. S'étendant sur des milliers d'acres de terres privées immaculées, notre domaine abrite certains des plus majestueux wapitis trophées au pays. C'est une invitation exclusive à vous mesurer à la nature, appuyé par des guides experts et une hospitalité cinq étoiles.
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Notre Engagement</p>
+                <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight text-white">Une entreprise familiale vouée à l'excellence.</h2>
+                <p class="text-brand-muted font-light leading-relaxed mb-6">
+                    Jackson Ranch Elk Outfitters est une entreprise familiale qui offre une expérience haut de gamme, personnalisée et adaptée aux capacités physiques de chaque chasseur. Nous prenons soin de nos clients et nous avons à cœur de rendre chaque séjour inoubliable.
                 </p>
-                <img src="./wapiti.png" alt="Wapiti dans la nature" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <p class="text-brand-muted font-light leading-relaxed mb-8">
+                    S'étendant sur des milliers d'acres de terres privées immaculées, notre domaine abrite des trophées de classe mondiale. C'est une invitation exclusive à vous mesurer à la nature, appuyé par des guides experts.
+                </p>
+                <img src="./wapiti.png" alt="Wapiti dans la nature" class="w-full h-80 object-cover hover:opacity-90 transition-opacity duration-700 shadow-xl border border-white/5">
             </div>
             <div class="reveal md:mt-32">
-                <img src="./lodge.jpg" alt="Paysage de chasse" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <img src="./lodge.jpg" alt="Paysage de chasse" class="w-full h-[600px] object-cover hover:opacity-90 transition-opacity duration-700 shadow-xl border border-white/5">
             </div>
         </div>
     </section>
 
-    <section id="lodge" class="py-32 bg-brand-gray border-t border-white/5 relative">
+    <section id="experience" class="py-32 bg-brand-brown border-t border-brand-accent/10">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="text-center mb-24 reveal">
-                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Confort et Authenticité</p>
-                <h2 class="font-serif text-4xl md:text-5xl mb-4">Le Jackson Lodge</h2>
-                <div class="w-24 h-[1px] bg-brand-accent mx-auto"></div>
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Le Standard Jackson Ranch</p>
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-white">Types de Chasse & Tarification</h2>
+                <div class="w-24 h-[1px] bg-brand-accent mx-auto mb-8"></div>
+                <p class="text-brand-muted max-w-3xl mx-auto font-light leading-relaxed text-lg">Nos tarifs sont basés sur les scores SCI des bois. Vous pouvez choisir un trophée pour l'ensemble du groupe, ou un trophée par chasseur.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 text-center">
-                <div class="reveal">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="group reveal">
+                    <div class="mb-6 text-brand-accent">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
                     </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Jusqu'à 6 Chasseurs</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Vous avez la possibilité de former un groupe de 4 à 6 chasseurs pour un trophée ou de combiner un 2e trophée pour un même groupe. Nous sommes entièrement équipés pour recevoir jusqu'à 6 chasseurs par forfait.</p>
+                    <h3 class="font-serif text-2xl mb-3 text-white">Chasse Garantie 100%</h3>
+                    <p class="text-brand-muted text-sm font-light leading-relaxed">Le succès est assuré. Tous nos clients récoltent leur trophée lors de leur séjour au Jackson Ranch.</p>
                 </div>
-
-                <div class="reveal" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 11h18M3 15h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Chambres</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le Jackson Lodge vous offre trois magnifiques chambres entièrement équipées. Literie complète incluse.<br><br>Chambre 1 : 1 lit queen<br>Chambre 2 : 1 lit queen<br>Chambre 3 : 2 lits simples</p>
-                </div>
-
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12V7a2 2 0 00-2-2H5a2 2 0 00-2 2v5m18 0v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9m18 0h-4m-10 0H3m8-8v12m0-12a2 2 0 100 4 2 2 0 000-4z"></path></svg>
-                    </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Salle de Bain</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Chaque lodge comprend une magnifique salle de bain rustique avec une grande douche en céramique. Inclus : serviettes, papier hygiénique, savon et shampoing.</p>
-                </div>
-
-                <div class="reveal">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
-                    </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Espace Feu Extérieur</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Quoi de mieux que de se retrouver entre amis autour du feu en se racontant des histoires de chasse mémorables ? Venez prendre un bon verre de vin et vous réchauffer autour d'un feu après une grosse journée de chasse. Nous avons aménagé un bel espace extérieur parfait pour les feux de camp... Bois inclus.</p>
-                </div>
-
-                <div class="reveal" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Salon Vue Panoramique</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le salon des chasseurs par excellence ! Grâce à sa grande fenestration et à son plafond cathédral, vous y trouverez assurément le confort. Vous pourrez admirer la vue panoramique bien au chaud, car un chaleureux poêle à bois est à votre disposition dans le salon.</p>
-                </div>
-
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center border border-white/10 rounded-full text-brand-accent bg-brand-dark hover:scale-110 transition-transform duration-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <h3 class="font-sans font-medium text-lg text-brand-accent mb-4 uppercase tracking-widest">Cuisine Complète</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Le lodge comprend une luxueuse cuisine à aire ouverte extrêmement lumineuse. Entièrement équipée, elle comprend des électroménagers au gaz de style rétro, une grande table rustique pour recevoir jusqu'à six personnes, ainsi qu'un petit comptoir-bar avec des bancs d'îlot pour vos apéros d'après-chasse.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities" class="py-32 bg-brand-dark border-t border-white/5 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            <div class="reveal relative z-10">
-                <h2 class="font-sans font-bold text-6xl md:text-8xl mb-6 text-white uppercase tracking-tighter opacity-[0.03] absolute -top-12 -left-4 pointer-events-none select-none">Activités</h2>
-                <h3 class="font-serif text-3xl md:text-4xl mb-6 leading-snug">Il n'y a pas que la chasse pour occuper vos journées au <span class="text-brand-accent italic font-light">Jackson Ranch.</span></h3>
-                <div class="w-16 h-[1px] bg-brand-accent mb-12"></div>
                 
-                <div class="space-y-12">
-                    <div class="flex gap-6 items-start group">
-                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
-                         </div>
-                         <div>
-                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Chasse au Petit Gibier</h4>
-                             <p class="text-gray-400 text-sm font-light leading-relaxed">Le Jackson Ranch, c'est l'endroit idéal pour la chasse à la perdrix. À bord d'un Argo, nous vous conduirons à un endroit de choix pour la chasse au petit gibier. Nous vous ferons ensuite découvrir les meilleures recettes pour apprêter la perdrix.</p>
-                         </div>
+                <div class="group reveal" style="transition-delay: 100ms;">
+                    <div class="mb-6 text-brand-accent">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                     </div>
-
-                    <div class="flex gap-6 items-start group">
-                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                         </div>
-                         <div>
-                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Randonnée en VTT</h4>
-                             <p class="text-gray-400 text-sm font-light leading-relaxed">Des moteurs, ce n'est pas ce qui manque au Jackson Ranch ! Trois VTT, trois côte à côte et un Argo sont à votre disposition. Pour les chasseurs qui veulent découvrir les magnifiques paysages de la région, nous organiserons une randonnée jusqu'au sommet du Mont Hereford où vous profiterez de points de vue à couper le souffle. Essence incluse.</p>
-                         </div>
-                    </div>
-
-                    <div class="flex gap-6 items-start group">
-                         <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-full text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                         </div>
-                         <div>
-                             <h4 class="font-sans font-medium text-white mb-2 uppercase tracking-wider text-sm group-hover:text-brand-accent transition-colors">Pêche</h4>
-                             <p class="text-gray-400 text-sm font-light leading-relaxed">Au Jackson Ranch, trois majestueux lacs ensemencés sont à votre portée pour taquiner la truite. Vous avez aussi la possibilité de combiner un forfait de pêche à votre séjour sur nos magnifiques lacs du Québec. L'embarcation motorisée est disponible sur demande.</p>
-                         </div>
-                    </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white">Scores de 350 à 700 SCI</h3>
+                    <p class="text-brand-muted text-sm font-light leading-relaxed">Nous offrons des trophées impressionnants (Wapiti et Cerf Rouge) allant de 350 points jusqu'à 650-700 points SCI. (Prix sur demande).</p>
                 </div>
-            </div>
 
-            <div class="reveal lg:pl-12">
-                <div class="relative p-2 border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Carte du territoire Jackson Ranch" class="w-full h-[650px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute bottom-6 right-6 bg-brand-dark/90 backdrop-blur-md px-6 py-4 border border-white/10">
-                        <span class="block text-xs text-brand-accent tracking-widest uppercase mb-1">Domaine Privé</span>
-                        <span class="block font-serif text-white text-xl">Carte du Territoire</span>
+                <div class="group reveal" style="transition-delay: 200ms;">
+                    <div class="mb-6 text-brand-accent">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
                     </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white">Arme de votre Choix</h3>
+                    <p class="text-brand-muted text-sm font-light leading-relaxed">Chassez selon vos préférences : Arc, Arbalète, Carabine ou Poudre noire. Une arme à feu est également disponible sur demande.</p>
+                </div>
+
+                <div class="group reveal" style="transition-delay: 300ms;">
+                    <div class="mb-6 text-brand-accent">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-3 text-white">Période du Rut</h3>
+                    <p class="text-brand-muted text-sm font-light leading-relaxed">L'expérience ultime. La période de rut se déroule du 15 septembre au 15 octobre, représentant les dates les plus populaires de la saison.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-32 bg-brand-gray border-t border-white/5">
+    <section id="lodge" class="py-32 bg-brand-dark border-t border-brand-accent/10 relative">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
-            <div class="text-center mb-24 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl mb-4">Le Standard Jackson Ranch</h2>
+            <div class="text-center mb-16 reveal">
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Votre Séjour</p>
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-white">Forfaits 4 jours / 3 nuits</h2>
                 <div class="w-24 h-[1px] bg-brand-accent mx-auto"></div>
+                <p class="text-brand-muted mt-8 font-light max-w-2xl mx-auto text-lg">
+                    Votre forfait inclut un séjour de 4 jours dans un magnifique chalet comprenant 3 chambres. Choisissez le plan d'hébergement qui correspond le mieux à votre style.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="group cursor-pointer reveal">
-                    <div class="overflow-hidden mb-6 h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1600078685168-3bf4672611e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wapitis Trophées" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
-                    </div>
-                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Wapitis Trophées</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">L'accès à des terres privées rigoureusement gérées vous assure des occasions sans précédent de croiser des wapitis matures de calibre mondial.</p>
-                </div>
-                
-                <div class="group cursor-pointer reveal" style="transition-delay: 100ms;">
-                    <div class="overflow-hidden mb-6 h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guides Maîtres" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
-                    </div>
-                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Guides Maîtres</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Nos guides chevronnés possèdent une connaissance générationnelle du terrain et du comportement des hardes, garantissant une chasse stratégique et éthique.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div class="border border-white/5 bg-brand-brown p-10 hover:border-brand-accent transition-colors duration-500 reveal shadow-lg">
+                    <h3 class="font-serif text-3xl text-white mb-2">Plan Américain</h3>
+                    <div class="text-brand-accent text-4xl font-light mb-6">400 $ <span class="text-sm text-brand-muted uppercase tracking-widest">/ jour / personne</span></div>
+                    <p class="text-brand-muted text-sm mb-8 font-light h-10">Formule tout incluse. Laissez-nous prendre soin de vous avec des menus entièrement personnalisés selon vos goûts.</p>
+                    <ul class="space-y-4 text-sm text-white font-light">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Déjeuner, dîner, souper</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Boissons incluses</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Collations à disposition</li>
+                    </ul>
                 </div>
 
-                <div class="group cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <div class="overflow-hidden mb-6 h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Le Lodge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100">
-                    </div>
-                    <h3 class="font-serif text-2xl mb-3 text-white group-hover:text-brand-accent transition-colors">Service Haut de Gamme</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed">Retirez-vous des montagnes pour profiter d'une attention sur mesure et d'une logistique sans faille tout au long de votre séjour.</p>
+                <div class="border border-white/5 bg-brand-brown p-10 hover:border-brand-accent transition-colors duration-500 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <h3 class="font-serif text-3xl text-white mb-2">Plan Européen</h3>
+                    <div class="text-brand-accent text-4xl font-light mb-6">175 $ <span class="text-sm text-brand-muted uppercase tracking-widest">/ jour / personne</span></div>
+                    <p class="text-brand-muted text-sm mb-8 font-light h-10">Une formule autonome pour votre groupe. Profitez de la cuisine luxueuse et entièrement équipée du lodge.</p>
+                    <ul class="space-y-4 text-sm text-white font-light">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Les clients font leur propre épicerie</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Préparation des repas par vous-mêmes</li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès complet à la cuisine et au BBQ</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-brand-dark pt-32 pb-12 border-t border-white/10 text-center">
+    <section id="activities" class="py-32 bg-brand-dark border-t border-brand-accent/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-white">Activités & Services Inclus</h2>
+                <div class="w-24 h-[1px] bg-brand-accent mx-auto"></div>
+                <p class="text-brand-muted mt-6 max-w-2xl mx-auto font-light text-lg">
+                    Il n'y a pas que la chasse pour occuper vos journées. Voici tout ce qui est inclus pour tous nos forfaits de chasse au Jackson Ranch.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 reveal">
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">🎣</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Pêche</span>
+                </div>
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">🦆</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Chasse aux petits gibiers</span>
+                </div>
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">🚙</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Accès VTT, Argo, Côte-à-côte</span>
+                </div>
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">🔪</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Préparation pour la taxidermie</span>
+                </div>
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">❄️</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Chambre froide</span>
+                </div>
+                <div class="p-6 border border-brand-accent/20 bg-brand-dark flex items-center gap-4 hover:border-brand-accent transition-colors duration-300">
+                    <span class="text-2xl">✈️</span>
+                    <span class="font-sans font-medium text-white tracking-wide">Transport aéroport (au besoin)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-brand-brown pt-32 pb-12 border-t border-brand-accent/20 text-center">
         <div class="max-w-3xl mx-auto px-6 reveal">
-            <h2 class="font-serif text-4xl md:text-6xl mb-8">Sécurisez Votre Expédition</h2>
-            <p class="text-gray-400 mb-12 font-light">Les places sont strictement limitées afin d'assurer la qualité de nos hardes et l'exclusivité de votre expérience. Les réservations pour la prochaine saison sont maintenant ouvertes.</p>
-            <a href="mailto:info@jacksonranchelkoutfitters.com" class="inline-block bg-transparent border border-brand-accent text-brand-accent uppercase tracking-widest text-sm px-12 py-5 hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
-                Consultez nos forfaits
+            <h2 class="font-serif text-4xl md:text-6xl mb-8 text-white">Obtenir un Devis Personnalisé</h2>
+            <p class="text-brand-muted mb-8 font-light text-lg">
+                Pour recevoir votre soumission complète, merci de nous envoyer un courriel en indiquant les informations suivantes :
+            </p>
+            
+            <div class="bg-brand-dark border border-brand-accent/20 p-8 inline-block text-left mb-12 shadow-lg">
+                <ul class="space-y-3 text-white font-light">
+                    <li><span class="text-brand-accent mr-2">•</span> Le nombre de chasseurs</li>
+                    <li><span class="text-brand-accent mr-2">•</span> Le nombre d'accompagnateurs</li>
+                    <li><span class="text-brand-accent mr-2">•</span> Le plan d'hébergement souhaité (Américain ou Européen)</li>
+                    <li><span class="text-brand-accent mr-2">•</span> Le trophée souhaité (Wapiti ou Cerf Rouge) et le score SCI approximatif</li>
+                </ul>
+            </div>
+
+            <br>
+            
+            <a href="mailto:info@jacksonranchelkoutfitters.com" class="inline-block bg-brand-accent text-brand-dark uppercase tracking-widest font-medium text-sm px-12 py-5 hover:bg-brand-accent-hover transition-all duration-300 shadow-md">
+                Envoyer ma demande
             </a>
         </div>
         
-        <div class="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-gray-600 text-xs uppercase tracking-widest">
+        <div class="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-brand-muted text-xs uppercase tracking-widest">
             <p>&copy; 2026 Jackson Ranch Elk Outfitters.</p>
             <span class="hidden md:inline">•</span>
-            <a href="#" class="hover:text-white transition-colors">Politique de Confidentialité</a>
+            <a href="#" class="hover:text-brand-accent transition-colors">Politique de Confidentialité</a>
             <span class="hidden md:inline">•</span>
-            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+            <a href="#" class="hover:text-brand-accent transition-colors">Instagram</a>
         </div>
     </footer>
 
@@ -308,10 +304,10 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/10', 'py-4');
+                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/5', 'py-4', 'shadow-md');
                 navbar.classList.remove('py-6', 'border-transparent');
             } else {
-                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/10', 'py-4');
+                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-sm', 'border-white/5', 'py-4', 'shadow-md');
                 navbar.classList.add('py-6', 'border-transparent');
             }
         });
