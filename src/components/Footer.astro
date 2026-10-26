@@ -1,0 +1,62 @@
+---
+import { contact, route, type Locale } from "../data/site";
+import { ui } from "../i18n/ui";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = ui[locale];
+const year = 2026;
+const callTel = locale === "fr" ? contact.vanessaTel : contact.charlesTel;
+const callDisplay = locale === "fr" ? contact.vanessaDisplay : contact.charlesDisplay;
+const callWho = locale === "fr" ? "Vanessa Garneau" : "Charles Verdo";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo-pad" href={route(locale, "home")}>
+        <img src="/logos/logo-192.webp" width="76" height="82" alt="Jackson Ranch Elk Outfitters" />
+      </a>
+      <p>Jackson Ranch Elk Outfitters<br />Saint-Isidore-de-Clifton, Québec</p>
+    </div>
+    <div>
+      <h2>{t.footerExplore}</h2>
+      <ul>
+        {t.footerLinks.map((item) => (
+          <li><a href={route(locale, item.id)}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div class="on-dark">
+      <h2>{t.footerContact}</h2>
+      <p>
+        {contact.ranch.street}<br />
+        {contact.ranch.locality} ({locale === "fr" ? "Québec" : "Quebec"}) {contact.ranch.postal}
+        <span class="tag">{t.pending}</span>
+      </p>
+      <p>
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      </p>
+      <p>
+        <a href={`tel:${callTel}`}>{callWho}, {callDisplay}</a>
+        {locale === "fr" && <span class="tag">{t.pending}</span>}
+      </p>
+    </div>
+    <div>
+      <h2>{t.footerFollow}</h2>
+      <ul>
+        <li><a href={contact.facebook} target="_blank" rel="noopener noreferrer">Facebook <span class="sr-only">({t.newTab})</span></a></li>
+        <li><a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram <span class="sr-only">({t.newTab})</span></a></li>
+        <li><a href={contact.youtubeChannel} target="_blank" rel="noopener noreferrer">YouTube <span class="sr-only">({t.newTab})</span></a></li>
+        <li><a href={contact.chassomaniak} target="_blank" rel="noopener noreferrer">Chassomaniak <span class="sr-only">({t.newTab})</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal-row">
+    <span>© {year} Jackson Ranch Elk Outfitters</span>
+    <a href={route(locale, "terms")}>{t.terms}</a>
+    <a href={route(locale, "privacy")}>{t.privacy}</a>
+    <a href={route(locale, "cookies")}>{t.cookies}</a>
+    <a href={route(locale, "credits")}>{t.credits}</a>
+  </div>
+</footer>

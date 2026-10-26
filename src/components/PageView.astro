@@ -1,0 +1,411 @@
+---
+import Base from "../layouts/Base.astro";
+import Media from "./Media.astro";
+import BookForm from "./BookForm.astro";
+import { clips, contact, licenses, route, type Locale } from "../data/site";
+import { ui } from "../i18n/ui";
+import { gallery, lodgePhotos, team } from "../content/gallery";
+import type { Page } from "../content/types";
+import { youtube } from "../data/site";
+
+interface Props { locale: Locale; page: Page; }
+const { locale, page } = Astro.props;
+const t = ui[locale];
+const path = route(locale, page.id);
+const alternate = route(locale === "fr" ? "en" : "fr", page.id);
+const faq = page.blocks.flatMap((block) => (block.type === "faq" ? block.items : []));
+const lcp = page.clip
+  ? {
+      href: `/posters/${clips[page.clip].id}-800.webp`,
+      srcset: `/posters/${clips[page.clip].id}-800.webp 800w, /posters/${clips[page.clip].id}.webp 1280w`,
+      sizes: "100vw",
+    }
+  : page.photo
+    ? { href: page.photo.src, srcset: page.photo.srcset, sizes: "100vw" }
+    : undefined;
+const crumbs = [
+  { name: t.home, path: route(locale, "home") },
+  { name: page.h1, path },
+];
+---
+
+<Base
+  locale={locale}
+  title={page.title}
+  description={page.description}
+  path={path}
+  alternate={alternate}
+  pageId={page.id}
+  lcp={lcp}
+  faq={faq}
+  crumbs={page.tone === "story" ? crumbs : crumbs}
+  showCta={page.cta}
+>
+  {page.tone === "doc" ? (
+    <header class="doc-hero">
+      <div class="wrap">
+        <nav class="crumbs" aria-label={t.crumbs}>
+          <ol>
+            <li><a href={route(locale, "home")}>{t.home}</a></li>
+            <li aria-current="page">{page.h1}</li>
+          </ol>
+        </nav>
+        <p class="eyebrow on-light">{page.eyebrow}</p>
+        <h1>{page.h1}</h1>
+        <p class="lede" style="color: inherit;">{page.lede}</p>
+      </div>
+    </header>
+  ) : (
+    <header class="page-hero">
+      <Media clip={page.clip} photo={page.photo} priority={true} />
+      <div class="shade"></div>
+      {page.clip && <p class="ambi">{t.atmosphere}</p>}
+      <div class="wrap page-hero-copy">
+        <nav class="crumbs" aria-label={t.crumbs}>
+          <ol>
+            <li><a href={route(locale, "home")}>{t.home}</a></li>
+            <li aria-current="page">{page.h1}</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1>{page.h1}</h1>
+        <p class="lede">{page.lede}</p>
+      </div>
+    </header>
+  )}
+
+  {page.blocks.map((block) => {
+    if (block.type === "prose") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap prose reveal">
+            {block.title && <h2>{block.title}</h2>}
+            {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "split") {
+      return (
+        <section class:list={["split", block.reverse && "reverse"]}>
+          <div class="split-copy">
+            <h2>{block.title}</h2>
+            {block.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <div class="split-media">
+            <img
+              class:list={[block.photo.crop && "crop-img"]}
+              src={block.photo.src}
+              width={block.photo.w}
+              height={block.photo.h}
+              alt={block.photo.alt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "cards") {
+      return (
+        <section class="section section-mist">
+          <div class="wrap">
+            {block.title && <h2>{block.title}</h2>}
+            {block.intro && <p class="narrow">{block.intro}</p>}
+            <div class:list={["card-grid", "reveal-group", block.items.length === 2 && "two"]}>
+              {block.items.map((item, index) => (
+                <article class="card reveal">
+                  <span class="index">{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "photos") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            {block.title && <h2>{block.title}</h2>}
+            {block.intro && <p class="narrow">{block.intro}</p>}
+            <div class:list={["photo-grid", block.items.length === 2 && "two"]}>
+              {block.items.map((item) => (
+                <figure class="photo-card">
+                  <div class="frame">
+                    <img src={item.photo.src} width={item.photo.w} height={item.photo.h} alt={item.photo.alt} loading="lazy" decoding="async" />
+                  </div>
+                  <figcaption>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "steps") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap narrow">
+            <h2>{block.title}</h2>
+            {block.intro && <p>{block.intro}</p>}
+            <ol class="steps">
+              {block.items.map((item) => (
+                <li>
+                  <time>{item.when}</time>
+                  <span>{item.what}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "plans") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <h2>{block.title}</h2>
+            <p class="narrow">{block.intro}</p>
+            <div class="plans">
+              <article class="plan plan-eu">
+                <p class="kicker">{t.onRequest}</p>
+                <h3>{block.leftTitle}</h3>
+                <ul>{block.leftPoints.map((point) => <li>{point}</li>)}</ul>
+              </article>
+              <article class="plan plan-us">
+                <p class="kicker">{t.onRequest}</p>
+                <h3>{block.rightTitle}</h3>
+                <ul>{block.rightPoints.map((point) => <li>{point}</li>)}</ul>
+              </article>
+            </div>
+            <p class="fine" style="margin-top:1rem;">{block.foot}</p>
+            <p><a class="btn btn-primary" href={`${route(locale, "book")}#formulaire`}>{t.rateCard}</a></p>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "list") {
+      return (
+        <section class="section section-mist">
+          <div class="wrap narrow">
+            <h2>{block.title}</h2>
+            {block.intro && <p>{block.intro}</p>}
+            <ul>{block.items.map((item) => <li>{item}</li>)}</ul>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "note") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap narrow">
+            <p class="form-status">{block.text} {block.href && <a href={block.href}>{block.hrefLabel}</a>}</p>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "sci") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <h2>{block.title}</h2>
+            <div class="plans">
+              <article class="plan plan-eu">
+                <h3>{block.elkLabel}</h3>
+                <ul>{block.elk.map((item) => <li>{item}</li>)}</ul>
+              </article>
+              <article class="plan plan-us">
+                <h3>{block.stagLabel}</h3>
+                <ul>{block.stag.map((item) => <li>{item}</li>)}</ul>
+              </article>
+            </div>
+            <p class="fine" style="margin-top:1rem;">{block.note}</p>
+            <p><a class="btn btn-ink" href={`${route(locale, "book")}#formulaire`}>{t.rateCard}</a></p>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "band") {
+      return (
+        <section class="band">
+          <Media clip={block.clip} />
+          <div class="shade"></div>
+          <p class="ambi">{t.atmosphere}</p>
+          <div class="wrap">
+            <div class="band-card">
+              <h2>{block.title}</h2>
+              <p>{block.text}</p>
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "links") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            {block.title && <h2>{block.title}</h2>}
+            <div class="links">
+              {block.items.map((item) => (
+                <a href={route(locale, item.id)}>
+                  <strong>{item.label}</strong>
+                  <span>{item.text}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "gallery") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <div class="gallery">
+              {gallery.map((item) => (
+                <figure class:list={[item.crop && "crop"]}>
+                  <img src={item.src} width={item.w} height={item.h} alt={item.alt[locale]} loading="lazy" decoding="async" />
+                  <figcaption>{item.alt[locale]}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "team") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <h2>{locale === "fr" ? "L'équipe" : "The team"}</h2>
+            <div class="team">
+              {team.map((person) => (
+                <article>
+                  <img src={person.src} width={person.w} height={person.h} alt={person.alt[locale]} loading="lazy" decoding="async" />
+                  <div>
+                    <h3>{person.name}</h3>
+                    {person.kind === "vanessa" && (
+                      <p>{t.vanessaRole}<br /><a href={`tel:${contact.vanessaTel}`}>{contact.vanessaDisplay}</a> <span class="tag">{t.pending}</span></p>
+                    )}
+                    {person.kind === "charles" && (
+                      <p>{t.charlesRole}<br /><a href={`tel:${contact.charlesTel}`}>{contact.charlesDisplay}</a></p>
+                    )}
+                    {person.kind === "jonathan" && (
+                      <p><span class="tag">{t.pending}</span><br /><span class="fine">{t.jonathanNote}</span></p>
+                    )}
+                    {person.kind === "vanessa" && <p class="fine">{t.vanessaNote}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "faq") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap faq">
+            {block.items.map((item) => (
+              <details>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "videos") {
+      return (
+        <section class="section section-ink">
+          <div class="wrap">
+            <h2>{locale === "fr" ? "Vidéos du ranch" : "Ranch videos"}</h2>
+            <div class="yt-grid">
+              {youtube.map((video) => (
+                <div class="yt">
+                  <button type="button" data-yt={video.id} data-title={video.title}>
+                    <img src={video.poster} width={video.w} height={video.h} alt="" />
+                    <span class="play" aria-hidden="true"></span>
+                    <span>{locale === "fr" ? "Lire" : "Play"}: {video.title}</span>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "form") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <BookForm locale={locale} />
+          </div>
+        </section>
+      );
+    }
+    if (block.type === "credits") {
+      return (
+        <section class="section section-paper">
+          <div class="wrap">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>{locale === "fr" ? "Fichier" : "File"}</th>
+                    <th>{locale === "fr" ? "Usage" : "Use"}</th>
+                    <th>{locale === "fr" ? "Auteur" : "Author"}</th>
+                    <th>{locale === "fr" ? "Licence" : "Licence"}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {licenses.map((row) => (
+                    <tr>
+                      <td>{row.n}</td>
+                      <td>{row.file}</td>
+                      <td>{locale === "fr" ? row.ideaFr : row.ideaEn}</td>
+                      <td>
+                        {row.authorUrl ? <a href={row.authorUrl}>{row.author}</a> : row.author}
+                      </td>
+                      <td><a href={row.licenseUrl}>{row.license}</a><br /><a href={row.source}>{locale === "fr" ? "Source" : "Source"}</a></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      );
+    }
+    return null;
+  })}
+
+  {page.id === "lodge" && (
+    <section class="section section-mist">
+      <div class="wrap">
+        <h2>{locale === "fr" ? "Le lodge en photos" : "The lodge in pictures"}</h2>
+        <p class="fine">{locale === "fr" ? "Ces vues intérieures viennent du site actuel. Plusieurs sont en basse résolution." : "These interior views come from the current site. Several are low resolution."}</p>
+        <div class="gallery">
+          {lodgePhotos.map((item) => (
+            <figure>
+              <img src={item.src} width={item.w} height={item.h} alt={item.alt[locale]} loading="lazy" decoding="async" />
+              <figcaption>{item.alt[locale]}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .table-wrap { overflow-x: auto; }
+</style>

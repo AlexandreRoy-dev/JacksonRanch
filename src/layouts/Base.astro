@@ -1,0 +1,143 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CtaBand from "../components/CtaBand.astro";
+import StickyBar from "../components/StickyBar.astro";
+import { absolute, contact, ogImage, SITE, type Locale, type RouteId } from "../data/site";
+import { ui } from "../i18n/ui";
+
+interface Crumb { name: string; path: string; }
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string;
+  alternate: string;
+  pageId: RouteId;
+  lcp?: { href: string; srcset?: string; sizes?: string };
+  faq?: { q: string; a: string }[];
+  crumbs?: Crumb[];
+  showCta?: boolean;
+}
+
+const { locale, title, description, path, alternate, pageId, lcp, faq, crumbs, showCta = false } = Astro.props;
+const t = ui[locale];
+const canonical = absolute(path);
+const frUrl = absolute(locale === "fr" ? path : alternate);
+const enUrl = absolute(locale === "en" ? path : alternate);
+const og = absolute(ogImage);
+const business = {
+  "@context": "https://schema.org",
+  "@type": ["LodgingBusiness", "LocalBusiness"],
+  name: "Jackson Ranch Elk Outfitters",
+  description,
+  url: `${SITE}/`,
+  image: og,
+  email: contact.email,
+  telephone: contact.vanessaTel,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: contact.ranch.street,
+    addressLocality: contact.ranch.locality,
+    addressRegion: contact.ranch.region,
+    postalCode: contact.ranch.postal,
+    addressCountry: contact.ranch.country,
+  },
+  areaServed: "Cantons-de-l'Est, Québec",
+  foundingDate: "2019",
+  sameAs: [contact.facebook, contact.instagram, contact.youtubeChannel],
+};
+const graph: unknown[] = [business];
+if (crumbs && crumbs.length > 1) {
+  graph.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: absolute(crumb.path),
+    })),
+  });
+}
+if (faq && faq.length) {
+  graph.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  });
+}
+---
+
+<!doctype html>
+<html lang={locale === "fr" ? "fr-CA" : "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr-CA" href={frUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jackson Ranch Elk Outfitters" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === "fr" ? "fr_CA" : "en_CA"} />
+    <meta property="og:locale:alternate" content={locale === "fr" ? "en_CA" : "fr_CA"} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:alt" content={t.ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <meta name="theme-color" content="#1d1d1b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {lcp && (
+      <link
+        rel="preload"
+        as="image"
+        href={lcp.href}
+        imagesrcset={lcp.srcset}
+        imagesizes={lcp.sizes || "100vw"}
+        fetchpriority="high"
+      />
+    )}
+    <link rel="preload" href="/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/barlow-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-display-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("reduce");
+      }
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">{t.skip}</a>
+    <div class="atmosphere" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+    <Header locale={locale} current={path} alternate={alternate} pageId={pageId} />
+    <main id="contenu">
+      <slot />
+      {showCta && <CtaBand locale={locale} />}
+    </main>
+    <Footer locale={locale} />
+    <StickyBar locale={locale} />
+    <script>
+      import "../scripts/main.ts";
+    </script>
+  </body>
+</html>

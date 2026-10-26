@@ -1,0 +1,13 @@
+{
+  "name": "jackson-ranch",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build && node scripts/write-sitemap.mjs && node scripts/check-dist.mjs",
+    "preview": "astro preview --host --port 4321"
+  },
+  "dependencies": {
+    "astro": "^5.18.2"
+  }
+}
