@@ -1,0 +1,165 @@
+---
+import { contact, route, type Locale } from "../data/site";
+import { ui } from "../i18n/ui";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = ui[locale];
+const f = t.form;
+const tel = locale === "fr" ? contact.vanessaTel : contact.charlesTel;
+const who = locale === "fr" ? "Vanessa Garneau" : "Charles Verdo";
+const display = locale === "fr" ? contact.vanessaDisplay : contact.charlesDisplay;
+---
+
+<div class="book-grid">
+  <form
+    id="formulaire"
+    class="stack"
+    method="post"
+    action="#formulaire"
+    novalidate
+    data-err-name={f.errors.name}
+    data-err-email={f.errors.email}
+    data-err-phone={f.errors.phone}
+    data-err-required={f.errors.required}
+    data-err-dates={f.errors.dates}
+    data-err-consent={f.errors.consent}
+    data-err-summary={f.summary}
+    data-status={f.status}
+  >
+    <h2>{f.title}</h2>
+    <p>{f.intro}</p>
+    <div class="form-grid">
+      <div class="field" id="field-name" data-field="name">
+        <label for="name">{f.name} <span class="req">*</span></label>
+        <input id="name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="field" id="field-email" data-field="email">
+        <label for="email">{f.email} <span class="req">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required />
+      </div>
+      <div class="field" id="field-phone" data-field="phone">
+        <label for="phone">{f.phone} <span class="req">*</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+      </div>
+      <div class="field" id="field-language" data-field="language">
+        <label for="language">{f.language} <span class="req">*</span></label>
+        <select id="language" name="language" required>
+          <option value="">{f.choose}</option>
+          <option value="fr">{f.languageFr}</option>
+          <option value="en">{f.languageEn}</option>
+        </select>
+      </div>
+      <div class="field" id="field-species" data-field="species">
+        <label for="species">{f.species} <span class="req">*</span></label>
+        <select id="species" name="species" required>
+          <option value="">{f.choose}</option>
+          <option value="elk">{f.speciesElk}</option>
+          <option value="stag">{f.speciesStag}</option>
+          <option value="both">{f.speciesBoth}</option>
+        </select>
+      </div>
+      <div class="field" id="field-sci" data-field="sci">
+        <label for="sci">{f.sci}</label>
+        <select id="sci" name="sci">
+          <option value="">{f.choose}</option>
+          {f.sciOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+        </select>
+      </div>
+      <div class="field" id="field-hunters" data-field="hunters">
+        <label for="hunters">{f.hunters} <span class="req">*</span></label>
+        <select id="hunters" name="hunters" required>
+          <option value="">{f.choose}</option>
+          {[1, 2, 3, 4, 5, 6].map((n) => <option value={String(n)}>{n}</option>)}
+        </select>
+      </div>
+      <div class="field" id="field-companions" data-field="companions">
+        <label for="companions">{f.companions}</label>
+        <select id="companions" name="companions">
+          <option value="0">0</option>
+          {[1, 2, 3, 4, 5, 6].map((n) => <option value={String(n)}>{n}</option>)}
+        </select>
+      </div>
+      <div class="field" id="field-plan" data-field="plan">
+        <label for="plan">{f.plan} <span class="req">*</span></label>
+        <select id="plan" name="plan" required>
+          <option value="">{f.choose}</option>
+          <option value="eu">{f.planEu}</option>
+          <option value="us">{f.planUs}</option>
+          <option value="discuss">{f.planDiscuss}</option>
+        </select>
+      </div>
+      <div class="field" id="field-weapon" data-field="weapon">
+        <label for="weapon">{f.weapon} <span class="req">*</span></label>
+        <select id="weapon" name="weapon" required>
+          <option value="">{f.choose}</option>
+          {f.weaponOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+        </select>
+      </div>
+      <div class="field" id="field-start" data-field="start">
+        <label for="start">{f.start}</label>
+        <input id="start" name="start" type="date" />
+      </div>
+      <div class="field" id="field-end" data-field="end">
+        <label for="end">{f.end}</label>
+        <input id="end" name="end" type="date" />
+      </div>
+      <fieldset class="full checks">
+        <legend>{f.activities}</legend>
+        <label class="check"><input type="checkbox" name="activities" value="fish" /> {f.actFish}</label>
+        <label class="check"><input type="checkbox" name="activities" value="atv" /> {f.actAtv}</label>
+        <label class="check"><input type="checkbox" name="activities" value="bird" /> {f.actBird}</label>
+        <label class="check"><input type="checkbox" name="activities" value="none" /> {f.actNone}</label>
+      </fieldset>
+      <div class="field full" id="field-message" data-field="message">
+        <label for="message">{f.message}</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <div class="field full" id="field-consent" data-field="consent">
+        <label class="check">
+          <input id="consent" name="consent" type="checkbox" value="yes" required />
+          <span>{f.consentBefore} <a href={route(locale, "privacy")}>{f.consentLink}</a>{f.consentAfter}</span>
+        </label>
+      </div>
+    </div>
+    <p class="fine">{f.endpointNote}</p>
+    <div class="sr-only" aria-hidden="true">
+      <label for="company">Company</label>
+      <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <button class="btn btn-primary" type="submit">{f.submit}</button>
+    <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
+    <noscript><p>{f.noscript}</p></noscript>
+  </form>
+  <aside>
+    <article class="contact-card">
+      <h3>Vanessa Garneau</h3>
+      <p>{t.vanessaRole}</p>
+      <p><a href={`tel:${contact.vanessaTel}`}>{contact.vanessaDisplay}</a> <span class="tag">{t.pending}</span></p>
+      <p class="fine">{t.vanessaNote}</p>
+    </article>
+    <article class="contact-card">
+      <h3>Charles Verdo</h3>
+      <p>{t.charlesRole}</p>
+      <p><a href={`tel:${contact.charlesTel}`}>{contact.charlesDisplay}</a></p>
+    </article>
+    <article class="contact-card">
+      <h3>{t.jonathanRole}</h3>
+      <p><span class="tag">{t.pending}</span></p>
+      <p class="fine">{t.jonathanNote}</p>
+    </article>
+    <article class="contact-card">
+      <h3>{t.emailLabel}</h3>
+      <p><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+      <h3>{t.addressLabel}</h3>
+      <p>
+        {contact.ranch.street}<br />
+        {contact.ranch.locality} (Québec) {contact.ranch.postal}
+        <span class="tag">{t.pending}</span>
+      </p>
+      <p class="fine">{t.addressNote}</p>
+      <p><a href={contact.maps} target="_blank" rel="noopener noreferrer">{t.map} <span class="sr-only">({t.newTab})</span></a></p>
+      <p><a class="btn btn-ink" href={`tel:${tel}`}>{locale === "fr" ? t.callName : t.callName}, {who} {display}</a></p>
+    </article>
+  </aside>
+</div>

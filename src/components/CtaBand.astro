@@ -1,0 +1,28 @@
+---
+import { contact, route, type Locale } from "../data/site";
+import { ui } from "../i18n/ui";
+import Media from "./Media.astro";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = ui[locale];
+const tel = locale === "fr" ? contact.vanessaTel : contact.charlesTel;
+const who = locale === "fr" ? contact.vanessaDisplay : contact.charlesDisplay;
+---
+
+<section class="band cta-band" aria-labelledby="cta-title">
+  <Media clip="camp" />
+  <div class="shade"></div>
+  <p class="ambi">{t.atmosphere}</p>
+  <div class="wrap">
+    <div class="band-card reveal">
+      <h2 id="cta-title">{t.ctaTitle}</h2>
+      <p>{t.ctaText}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={route(locale, "book")}>{t.bookLong}</a>
+        <a class="btn btn-ghost" href={`tel:${tel}`}>{t.callName}, {who}</a>
+      </div>
+      {locale === "fr" && <p class="fine">{t.vanessaNote} <span class="tag">{t.pending}</span></p>}
+    </div>
+  </div>
+</section>

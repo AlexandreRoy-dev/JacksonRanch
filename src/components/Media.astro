@@ -1,0 +1,57 @@
+---
+import { clips, type ClipKey } from "../data/site";
+import type { Photo } from "../content/types";
+
+interface Props {
+  clip?: ClipKey;
+  photo?: Photo;
+  priority?: boolean;
+}
+const { clip, photo, priority = false } = Astro.props;
+const clipData = clip ? clips[clip] : undefined;
+---
+
+<div class="media">
+  {clipData && (
+    <>
+      <img
+        class="media-poster"
+        src={`/posters/${clipData.id}-800.webp`}
+        srcset={`/posters/${clipData.id}-800.webp 800w, /posters/${clipData.id}.webp 1280w`}
+        sizes="100vw"
+        alt=""
+        width="1280"
+        height={clipData.h}
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "low"}
+        decoding={priority ? "sync" : "async"}
+      />
+      <video
+        class="bgvid"
+        muted
+        loop
+        playsinline
+        preload="none"
+        width="1280"
+        height={clipData.h}
+        aria-hidden="true"
+        data-src-mp4={`/video/${clipData.id}.mp4`}
+        data-src-webm={clipData.webm ? `/video/${clipData.id}.webm` : undefined}
+      ></video>
+    </>
+  )}
+  {photo && (
+    <img
+      class:list={["media-poster", photo.crop && "crop-img"]}
+      src={photo.src}
+      srcset={photo.srcset}
+      sizes="100vw"
+      alt=""
+      width={photo.w}
+      height={photo.h}
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : "low"}
+      decoding={priority ? "sync" : "async"}
+    />
+  )}
+</div>

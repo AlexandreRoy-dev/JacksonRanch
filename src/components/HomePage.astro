@@ -1,0 +1,202 @@
+---
+import Base from "../layouts/Base.astro";
+import Media from "./Media.astro";
+import { clips, route, type Locale } from "../data/site";
+import { home } from "../content/home";
+import { ui } from "../i18n/ui";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const copy = home[locale];
+const t = ui[locale];
+const path = route(locale, "home");
+const alternate = route(locale === "fr" ? "en" : "fr", "home");
+const lcp = {
+  href: `/posters/${clips.autumn.id}-800.webp`,
+  srcset: `/posters/${clips.autumn.id}-800.webp 800w, /posters/${clips.autumn.id}.webp 1280w`,
+  sizes: "100vw",
+};
+---
+
+<Base
+  locale={locale}
+  title={copy.title}
+  description={copy.description}
+  path={path}
+  alternate={alternate}
+  pageId="home"
+  lcp={lcp}
+  showCta={true}
+>
+  <section class="hero">
+    <Media clip="autumn" priority={true} />
+    <div class="shade"></div>
+    <p class="ambi">{t.atmosphere}</p>
+    <div class="wrap hero-copy">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.h1}</h1>
+      <p class="lede">{copy.lede}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={route(locale, "book")}>{t.bookLong}</a>
+        <a class="btn btn-ghost" href={route(locale, "packages")}>{t.packagesCta}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label={locale === "fr" ? "Repères" : "Facts"}>
+    <div class="wrap proof-grid">
+      <article>
+        <strong class="proof-value proof-num"><span data-count="720">720</span></strong>
+        <p>{locale === "fr" ? "Points SCI, jusqu'à" : "SCI points, up to"}</p>
+      </article>
+      <article>
+        <strong class="proof-value">{locale === "fr" ? "4 à 6" : "4 to 6"}</strong>
+        <p>{locale === "fr" ? "Chasseurs, un seul groupe à la fois" : "Hunters, one group at a time"}</p>
+      </article>
+      <article>
+        <strong class="proof-value">{locale === "fr" ? "Mi-août à fin novembre" : "Mid-August to late November"}</strong>
+        <p>{locale === "fr" ? "Saison de chasse" : "Hunting season"}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-paper">
+    <div class="wrap">
+      <p class="eyebrow on-light">{copy.experienceTitle}</p>
+      <div class="split" style="background: transparent;">
+        <div class="split-copy reveal" style="padding-left: 0;">
+          <h2>{copy.experienceTitle}</h2>
+          <p class="statement">{copy.experienceStatement}</p>
+          {copy.experience.map((paragraph) => <p>{paragraph}</p>)}
+          <p><a class="btn btn-ink" href={route(locale, "hunt")}>{locale === "fr" ? "La chasse en détail" : "The hunt in detail"}</a></p>
+        </div>
+        <div class="split-media">
+          <img
+            src="/photos/chasseurs-camouflage-foret-800.webp"
+            srcset="/photos/chasseurs-camouflage-foret-800.webp 800w, /photos/chasseurs-camouflage-foret-1200.webp 1200w"
+            sizes="(min-width: 980px) 46vw, 100vw"
+            width="1200"
+            height="1200"
+            alt={copy.experienceAlt}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-ink" style="padding-bottom: 0;">
+    <div class="wrap" style="padding: clamp(3rem, 6vw, 5rem) 0 1.5rem;">
+      <p class="eyebrow">{copy.speciesTitle}</p>
+      <h2>{copy.speciesTitle}</h2>
+      <p class="narrow">{copy.speciesIntro}</p>
+    </div>
+    <div class="species">
+      <a href={route(locale, "elk")}>
+        <img
+          src="/photos/trophee-wapiti-chasseur-automne-800.webp"
+          srcset="/photos/trophee-wapiti-chasseur-automne-800.webp 800w, /photos/trophee-wapiti-chasseur-automne-1200.webp 1200w"
+          sizes="(min-width: 980px) 50vw, 100vw"
+          width="1200"
+          height="688"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="shade"></div>
+        <div class="species-copy">
+          <h3>{copy.elkTitle}</h3>
+          <p>{copy.elkText}</p>
+        </div>
+      </a>
+      <a href={route(locale, "stag")}>
+        <img
+          src="/photos/chasseurs-duo-cerf-rouge-trophee-800.webp"
+          srcset="/photos/chasseurs-duo-cerf-rouge-trophee-800.webp 800w, /photos/chasseurs-duo-cerf-rouge-trophee-1200.webp 1200w"
+          sizes="(min-width: 980px) 50vw, 100vw"
+          width="1200"
+          height="1200"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="shade"></div>
+        <div class="species-copy">
+          <h3>{copy.stagTitle}</h3>
+          <p>{copy.stagText}</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="band">
+    <Media clip="fire" />
+    <div class="shade"></div>
+    <p class="ambi">{t.atmosphere}</p>
+    <div class="wrap">
+      <div class="band-card reveal">
+        <p class="eyebrow">{copy.lodgeTitle}</p>
+        <h2>{copy.lodgeTitle}</h2>
+        <p>{copy.lodgeText}</p>
+        <p><a class="btn btn-primary" href={route(locale, "lodge")}>{copy.lodgeLink}</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper">
+    <div class="wrap">
+      <p class="eyebrow on-light">{copy.activitiesTitle}</p>
+      <h2>{copy.activitiesTitle}</h2>
+      <p class="narrow">{copy.activitiesIntro}</p>
+      <div class="photo-grid">
+        <figure class="photo-card">
+          <div class="frame"><img src="/photos/inclusion-vtt-866.webp" width="866" height="496" alt={locale === "fr" ? "VTT du ranch" : "Ranch ATV"} loading="lazy" decoding="async" /></div>
+          <figcaption><h3>{copy.atvTitle}</h3><p>{copy.atvText}</p></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="frame"><img src="/photos/panorama-automne-vallee-1200.webp" width="1200" height="502" alt={locale === "fr" ? "Vallée d'automne au ranch" : "Autumn valley at the ranch"} loading="lazy" decoding="async" /></div>
+          <figcaption><h3>{copy.fishTitle}</h3><p>{copy.fishText}</p></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="frame"><img src="/photos/inclusion-argo-866.webp" width="866" height="496" alt={locale === "fr" ? "Argo du ranch" : "Ranch Argo"} loading="lazy" decoding="async" /></div>
+          <figcaption><h3>{copy.birdTitle}</h3><p>{copy.birdText}</p></figcaption>
+        </figure>
+      </div>
+      <p style="margin-top: 1.2rem;"><a class="btn btn-ink" href={route(locale, "activities")}>{locale === "fr" ? "Toutes les activités" : "All activities"}</a></p>
+    </div>
+  </section>
+
+  <section class="section section-mist">
+    <div class="wrap">
+      <h2>{copy.reviewsTitle}</h2>
+      <p class="narrow">{copy.reviewsText}</p>
+      <ul class="names">
+        {copy.names.map((name) => <li>{name}</li>)}
+      </ul>
+      <p><a href="https://www.google.com/search?q=Jackson+Ranch+Elk+Outfitters+Saint-Isidore-de-Clifton" target="_blank" rel="noopener noreferrer">{copy.reviewsLink} <span class="sr-only">({t.newTab})</span></a></p>
+    </div>
+  </section>
+
+  <section class="section section-brown">
+    <div class="wrap narrow">
+      <p class="eyebrow">{locale === "fr" ? "Depuis 2019" : "Since 2019"}</p>
+      <h2>{copy.storyTitle}</h2>
+      <p>{copy.storyText}</p>
+      <p><a class="btn btn-ghost" href={route(locale, "about")}>{copy.storyLink}</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+  }
+</style>

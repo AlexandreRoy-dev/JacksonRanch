@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+# Build only. This workflow uploads dist as an artifact.
+# It does not deploy, and it does not change GitHub Pages or the CNAME.
+# Do not add a pages deploy job. Merging to main while Pages publishes
+# the repository root would replace the live draft at jacksonranch.roymarketing.ca.
+# The owner has to approve that, and Pages has to be pointed at the build, first.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          if-no-files-found: error

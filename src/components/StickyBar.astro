@@ -1,0 +1,14 @@
+---
+import { contact, route, type Locale } from "../data/site";
+import { ui } from "../i18n/ui";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = ui[locale];
+const tel = locale === "fr" ? contact.vanessaTel : contact.charlesTel;
+---
+
+<div class="sticky-bar">
+  <a href={`tel:${tel}`}>{t.call}</a>
+  <a class="primary" href={route(locale, "book")}>{t.stickyBook}</a>
+</div>

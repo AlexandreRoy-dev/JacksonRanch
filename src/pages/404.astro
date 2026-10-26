@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import { route } from "../data/site";
+---
+
+<Base
+  locale="fr"
+  title="Page introuvable | Jackson Ranch Elk Outfitters"
+  description="Cette adresse ne correspond à aucune page du ranch."
+  path="/404.html"
+  alternate={route("en", "home")}
+  pageId="home"
+  showCta={false}
+>
+  <header class="doc-hero">
+    <div class="wrap">
+      <p class="eyebrow on-light">404</p>
+      <h1>Cette page n'existe pas.</h1>
+      <p class="lede" style="color: inherit;">L'adresse ne correspond à aucune page. Revenez à l'accueil, ou passez à la version anglaise.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={route("fr", "home")}>Accueil</a>
+        <a class="btn btn-ink" href={route("en", "home")}>English home</a>
+      </div>
+    </div>
+  </header>
+</Base>

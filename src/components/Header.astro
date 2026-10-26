@@ -1,0 +1,45 @@
+---
+import { route, type Locale, type RouteId } from "../data/site";
+import { ui } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+  current: string;
+  alternate: string;
+  pageId: RouteId;
+}
+const { locale, current, alternate } = Astro.props;
+const t = ui[locale];
+const other = locale === "fr" ? "en" : "fr";
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href={route(locale, "home")}>
+      <img src="/logos/logo-192.webp" width="63" height="68" alt="Jackson Ranch Elk Outfitters" />
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="open-label">{t.menu}</span>
+      <span class="close-label">{t.close}</span>
+    </button>
+    <nav id="nav" class="nav" aria-label={locale === "fr" ? "Principal" : "Primary"}>
+      {t.nav.map((item) => (
+        <a href={route(locale, item.id)} aria-current={route(locale, item.id) === current ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+      <a class="btn btn-primary" href={route(locale, "book")}>{t.book}</a>
+      <a class="lang" href={alternate} hreflang={other === "fr" ? "fr-CA" : "en"} lang={other === "fr" ? "fr-CA" : "en"}>
+        {t.langShort}
+        <span class="sr-only">{t.langLabel}</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .open-label, .close-label { pointer-events: none; }
+  .close-label { display: none; }
+  :global(body.nav-open) .open-label { display: none; }
+  :global(body.nav-open) .close-label { display: inline; }
+</style>

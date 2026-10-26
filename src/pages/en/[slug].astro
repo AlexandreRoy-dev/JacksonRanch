@@ -1,0 +1,25 @@
+---
+import PageView from "../../components/PageView.astro";
+import { pages } from "../../content/pages";
+import { route, type Locale } from "../../data/site";
+import type { Page } from "../../content/types";
+
+export function getStaticPaths() {
+  const locale: Locale = "en";
+  return Object.entries(pages[locale]).map(([slug, page]) => {
+    const expected = route(locale, page.id).replace(/^\/en\/|\/$/g, "");
+    if (slug !== expected) {
+      throw new Error(`EN slug "${slug}" does not match route "${expected}" for ${page.id}`);
+    }
+    return { params: { slug }, props: { page } };
+  });
+}
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+---
+
+<PageView locale="en" page={page} />
